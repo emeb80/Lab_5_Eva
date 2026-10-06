@@ -119,7 +119,10 @@ function saveHistory() {
  */
 function loadHistory() {
   // Hämta eventuell sparad historik
+const savedHistory= localStorage.getItem("studentHistory");
   // Uppdatera history
+  history=JSON.parse(savedHistory);
+  console.log(history);
 }
 
 /**
@@ -166,4 +169,5 @@ form.addEventListener("submit", function (event) {
 // När användaren klickar på "Radera historik"
 
 // När sidan laddas:
+loadHistory();
 // - läs in och visa eventuell tidigare historik
