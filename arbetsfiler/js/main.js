@@ -39,15 +39,17 @@ function validateForm() {
     // Kontrollera formulärets obligatoriska fält
     //lägger till de tre felen till arrayen med push samt anger felmeddelande
  if (fullnameInput.value===""){
-        errors.push("Fältet måste vara ifyllt!");
+        errors.push("Namn måste anges!");
     }
     if (emailInput.value === "") {
-        errors.push("Fältet måste vara ifyllt!");
+        errors.push("E-post måste anges!");
     }
     if (phoneInput.value === "") {
-        errors.push("Fältet måste vara ifyllt!");
+        errors.push("Telefonnummer måste anges!");
     }
     // Visa eventuella felmeddelanden
+        displayErrors();
+    
 
     // Returnera resultatet (true eller false) av valideringen
     if (errors.length===0){
@@ -57,6 +59,7 @@ function validateForm() {
         return false
     }
 }
+
 
 
 /**
