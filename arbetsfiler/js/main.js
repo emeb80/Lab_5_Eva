@@ -104,7 +104,8 @@ const student = {
   // Spara och uppdatera historiken
   history.push(student)
   saveHistory();
-  console.log(history);
+  renderHistory();
+  
 }
 /**
  * Sparar historiken i localStorage. */
@@ -143,8 +144,14 @@ historySection.innerHTML = "";
  * Rensar formulär, aktuellt studentkort och felmeddelanden.
  */
 function clearForm() {
-  // Återställ formulär och studentkort
+   // Återställ formulär och studentkort
+    form.reset();
+    previewFullname.textContent = "Namn";
+    previewEmail.textContent="E-post";
+    previewPhone.textContent="Telefon";
+  
   // Rensa eventuella felmeddelanden
+  errorList.innerHTML = "";
 }
 
 /**
@@ -171,6 +178,9 @@ form.addEventListener("submit", function (event) {
 });
 
 // När användaren klickar på "Rensa"
+clearButton.addEventListener("click", function (){
+    clearForm();
+});
 
 // När användaren klickar på "Radera historik"
 
