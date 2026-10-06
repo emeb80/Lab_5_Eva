@@ -122,7 +122,8 @@ function loadHistory() {
   // Hämta eventuell sparad historik
 const savedHistory= localStorage.getItem("studentHistory");
   // Uppdatera history
-  history=JSON.parse(savedHistory);
+  if (savedHistory) 
+    history = JSON.parse(savedHistory);
   
 }
 
