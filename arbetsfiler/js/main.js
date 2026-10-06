@@ -122,7 +122,7 @@ function loadHistory() {
 const savedHistory= localStorage.getItem("studentHistory");
   // Uppdatera history
   history=JSON.parse(savedHistory);
-  console.log(history);
+  
 }
 
 /**
@@ -130,7 +130,13 @@ const savedHistory= localStorage.getItem("studentHistory");
  */
 function renderHistory() {
   // Rensa tidigare visad historik
+historySection.innerHTML = "";
   // Skriv ut innehållet i history till DOM
+  history.forEach(function(student){
+    const historyItem = document.createElement("li");
+    historyItem.textContent = student.fullname + " - " + student.email + " - " + student.font;;
+    historySection.appendChild(historyItem);
+  });
 }
 
 /**
@@ -170,4 +176,5 @@ form.addEventListener("submit", function (event) {
 
 // När sidan laddas:
 loadHistory();
+renderHistory();
 // - läs in och visa eventuell tidigare historik
