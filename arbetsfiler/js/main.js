@@ -135,7 +135,7 @@ historySection.innerHTML = "";
   // Skriv ut innehållet i history till DOM
   history.forEach(function(student){
     const historyItem = document.createElement("li");
-    historyItem.textContent = student.fullname + " - " + student.email + " - " + student.font;;
+     historyItem.innerHTML = `${student.fullname}<br>${student.email}<br>${student.phone}<br>${student.font}`;
     historySection.appendChild(historyItem);
   });
 }
