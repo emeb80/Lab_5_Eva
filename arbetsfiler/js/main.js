@@ -27,6 +27,7 @@ let errors = [];
 // Array som innehåller sparade studentkort
 let history = [];
 
+
 /**
  * Validerar formulärets inmatning.
  * @returns {boolean}
@@ -81,6 +82,8 @@ function createStudentCard() {
   const email = emailInput.value;
   const phone = phoneInput.value;
   const font = fontSelect.value;
+  
+
 
   // Uppdatera studentkortet
   previewFullname.textContent = fullname;
@@ -89,18 +92,26 @@ function createStudentCard() {
 
   //Val av font-family
   const card = document.querySelector(".card");
-  card.style.fontFamily = font;
+  card.style.fontFamily = font
 
   // Lägg till studentkortet i historiken
-
+const student = {
+    fullname: fullname,
+    email: email,
+    phone: phone,
+    font:font
+  };
   // Spara och uppdatera historiken
+  history.push(student)
+  saveHistory();
+  console.log(history);
 }
-
 /**
- * Sparar historiken i localStorage.
- */
+ * Sparar historiken i localStorage. */
+//Omvandlar JavaScript till JSON
 function saveHistory() {
-  // Spara history i localStorage
+  
+  localStorage.setItem("studentHistory", JSON.stringify(history));
 }
 
 /**
