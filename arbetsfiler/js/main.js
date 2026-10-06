@@ -33,11 +33,29 @@ let history = [];
  * @returns {boolean}
  */
 function validateForm() {
+   //Tömmer arrayen på fel när de är korrigerade
+    errors =[];
+    
     // Kontrollera formulärets obligatoriska fält
-
+    //lägger till de tre felen till arrayen med push samt anger felmeddelande
+ if (fullnameInput.value===""){
+        errors.push("Fältet måste vara ifyllt!");
+    }
+    if (emailInput.value === "") {
+        errors.push("Fältet måste vara ifyllt!");
+    }
+    if (phoneInput.value === "") {
+        errors.push("Fältet måste vara ifyllt!");
+    }
     // Visa eventuella felmeddelanden
 
     // Returnera resultatet (true eller false) av valideringen
+    if (errors.length===0){
+        return true;
+    }
+    else{
+        return false
+    }
 }
 
 
@@ -46,8 +64,14 @@ function validateForm() {
  */
 function displayErrors() {
     // Rensa tidigare felmeddelanden
+    errorList.innerHTML ="";
 
     // Skriv ut aktuella felmeddelanden till DOM
+    errors.forEach(function(error){
+        const errorItem=document.createElement("li");
+        errorItem.textContent=error;
+        errorList.appendChild(errorItem);
+    });
 }
 
 
@@ -127,10 +151,18 @@ function deleteHistory() {
 //Stoppar webbläsarens naturliga beteende (default)
 form.addEventListener ("submit", function (event){
     event.preventDefault();
-    createStudentCard();
-});
-// - validera inmatningen
+ 
+    // - validera inmatningen
+if(validateForm()){
+    
+
 // - skapa studentkort om valideringen lyckas
+createStudentCard();
+};
+
+});
+
+
 
 
 // När användaren klickar på "Rensa"
