@@ -163,6 +163,7 @@ function deleteHistory() {
   history = [];
   localStorage.removeItem("studentHistory");
   // Uppdatera history och visningen på sidan
+  renderHistory();
 }
 
 // Eventlyssnare
@@ -186,6 +187,10 @@ clearButton.addEventListener("click", function (){
 });
 
 // När användaren klickar på "Radera historik"
+deleteHistoryButton.addEventListener("click", function (){
+    deleteHistory();
+});
+
 
 // När sidan laddas:
 loadHistory();
