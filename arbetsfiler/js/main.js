@@ -21,7 +21,6 @@ const errorList = document.querySelector("#errorlist");
 const historySection = document.querySelector("#history");
 const deleteHistoryButton = document.querySelector("#delete");
 
-
 // Array som används för felmeddelanden
 let errors = [];
 
@@ -33,146 +32,127 @@ let history = [];
  * @returns {boolean}
  */
 function validateForm() {
-   //Tömmer arrayen på fel när de är korrigerade
-    errors =[];
-    
-    // Kontrollera formulärets obligatoriska fält
-    //lägger till de tre felen till arrayen med push samt anger felmeddelande
- if (fullnameInput.value===""){
-        errors.push("Namn måste anges!");
-    }
-    if (emailInput.value === "") {
-        errors.push("E-post måste anges!");
-    }
-    if (phoneInput.value === "") {
-        errors.push("Telefonnummer måste anges!");
-    }
-    // Visa eventuella felmeddelanden
-        displayErrors();
-    
+  //Tömmer arrayen på fel när de är korrigerade
+  errors = [];
 
-    // Returnera resultatet (true eller false) av valideringen
-    if (errors.length===0){
-        return true;
-    }
-    else{
-        return false
-    }
+  // Kontrollera formulärets obligatoriska fält
+  //lägger till de tre felen till arrayen med push samt anger felmeddelande
+  if (fullnameInput.value === "") {
+    errors.push("Namn måste anges!");
+  }
+  if (emailInput.value === "") {
+    errors.push("E-post måste anges!");
+  }
+  if (phoneInput.value === "") {
+    errors.push("Telefonnummer måste anges!");
+  }
+  // Visa eventuella felmeddelanden
+  displayErrors();
+
+  // Returnera resultatet (true eller false) av valideringen
+  if (errors.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
-
 
 /**
  * Visar felmeddelanden på sidan.
  */
 function displayErrors() {
-    // Rensa tidigare felmeddelanden
-    errorList.innerHTML ="";
+  // Rensa tidigare felmeddelanden
+  errorList.innerHTML = "";
 
-    // Skriv ut aktuella felmeddelanden till DOM
-    errors.forEach(function(error){
-        const errorItem=document.createElement("li");
-        errorItem.textContent=error;
-        errorList.appendChild(errorItem);
-    });
+  // Skriv ut aktuella felmeddelanden till DOM
+  errors.forEach(function (error) {
+    const errorItem = document.createElement("li");
+    errorItem.textContent = error;
+    errorList.appendChild(errorItem);
+  });
 }
-
 
 /**
  * Skapar ett studentkort och visar det på sidan.
  */
 function createStudentCard() {
-    // Hämta information från formuläret
-    const fullname=fullnameInput.value;
-    const email=emailInput.value;
-    const phone=phoneInput.value;
-    const font=fontSelect.value;
+  // Hämta information från formuläret
+  const fullname = fullnameInput.value;
+  const email = emailInput.value;
+  const phone = phoneInput.value;
+  const font = fontSelect.value;
 
-    // Uppdatera studentkortet
-    previewFullname. textContent = fullname;
-    previewEmail.textContent = email;
-    previewPhone.textContent =phone;
+  // Uppdatera studentkortet
+  previewFullname.textContent = fullname;
+  previewEmail.textContent = email;
+  previewPhone.textContent = phone;
 
-    // Lägg till studentkortet i historiken
+  //Val av font-family
+  const card = document.querySelector(".card");
+  card.style.fontFamily = font;
 
-    // Spara och uppdatera historiken
+  // Lägg till studentkortet i historiken
+
+  // Spara och uppdatera historiken
 }
-
 
 /**
  * Sparar historiken i localStorage.
  */
 function saveHistory() {
-    // Spara history i localStorage
+  // Spara history i localStorage
 }
-
 
 /**
  * Läser in tidigare historik från localStorage.
  */
 function loadHistory() {
-    // Hämta eventuell sparad historik
-
-    // Uppdatera history
+  // Hämta eventuell sparad historik
+  // Uppdatera history
 }
-
 
 /**
  * Visar historiken på sidan.
  */
 function renderHistory() {
-    // Rensa tidigare visad historik
-
-    // Skriv ut innehållet i history till DOM
+  // Rensa tidigare visad historik
+  // Skriv ut innehållet i history till DOM
 }
-
 
 /**
  * Rensar formulär, aktuellt studentkort och felmeddelanden.
  */
 function clearForm() {
-    // Återställ formulär och studentkort
-
-    // Rensa eventuella felmeddelanden
+  // Återställ formulär och studentkort
+  // Rensa eventuella felmeddelanden
 }
-
 
 /**
  * Raderar hela historiken.
  */
 function deleteHistory() {
-    // Radera sparad historik
-
-    // Uppdatera history och visningen på sidan
+  // Radera sparad historik
+  // Uppdatera history och visningen på sidan
 }
-
 
 // Eventlyssnare
 
 // När formuläret skickas:
 
 //Stoppar webbläsarens naturliga beteende (default)
-form.addEventListener ("submit", function (event){
-    event.preventDefault();
- 
-    // - validera inmatningen
-if(validateForm()){
-    
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-// - skapa studentkort om valideringen lyckas
-createStudentCard();
-};
-
+  // - validera inmatningen
+  if (validateForm()) {
+    // - skapa studentkort om valideringen lyckas
+    createStudentCard();
+  }
 });
-
-
-
 
 // När användaren klickar på "Rensa"
 
-
 // När användaren klickar på "Radera historik"
-
 
 // När sidan laddas:
 // - läs in och visa eventuell tidigare historik
