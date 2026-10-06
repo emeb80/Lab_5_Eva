@@ -102,7 +102,7 @@ const student = {
     font:font
   };
   // Spara och uppdatera historiken
-  history.push(student)
+  history.unshift(student)
   saveHistory();
   renderHistory();
   
